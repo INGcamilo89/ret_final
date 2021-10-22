@@ -36,11 +36,11 @@ public class barcos implements Serializable {
     private Categorias category;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "boat")
-    @JsonIgnoreProperties({"boat", "client"})
+    @JsonIgnoreProperties({"boat", "client","messages","reservations"})
     private List<Mensajes> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "boat")
-    @JsonIgnoreProperties({"boat", "client"})
+    @JsonIgnoreProperties({"boat", "client","messages","reservations"})
     private List<Reservas> reservations;
 
     public Integer getId() {
