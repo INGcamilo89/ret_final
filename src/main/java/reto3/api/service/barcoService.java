@@ -72,8 +72,8 @@ public class barcoService {
         }
     }
 
-    public boolean eliminar(int barcosId){
-        Boolean aBoolean=getBarcos(barcosId).map(Barcos ->{
+    public boolean eliminar(int BarcosId){
+        Boolean aBoolean=getBarcos(BarcosId).map(Barcos ->{
             BarcosRepository.eliminarBarcos(Barcos);
             return true;
         }).orElse(false);
