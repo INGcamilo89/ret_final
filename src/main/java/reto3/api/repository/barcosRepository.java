@@ -23,7 +23,8 @@ public class barcosRepository{
             return BarcosCrudRepository.findById(id);
         }
         //elimina lista de barcos
-        public void eliminarBarcos(barcos Barcos){
+        public void eliminarBarcos(barcos Barcos)
+        {
             BarcosCrudRepository.delete(Barcos);
         }
 
