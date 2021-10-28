@@ -31,5 +31,39 @@ public class mensajeService {
         return  MensajeRepository.getMensaje(MensajesId);
     }
 
+    public Mensajes update(Mensajes mensajes)
+    {
+        if(mensajes.getIdMessage()!=null)
+        {
+            Optional<Mensajes> e= MensajeRepository.getMessage((int) mensajes.getIdMessage());
+            if(!e.equals(null))
+            {
+                if(mensajes.getMessageText()!=null)
+                {
+                    e.get().setMessageText(mensajes.getMessageText());
+                }
+                MensajeRepository.save(e.get());
+                return e.get();
+            }
+            else
+            {
+                return mensajes;
+            }
+        }
+        else
+        {
+            return mensajes;
+        }
+    }
+    public boolean deleteMessage(int idMessage)
+    {
+        Boolean aBoolean = getMensaje(idMessage).map(mensajes ->
+        {
+            MensajeRepository.delete(mensajes);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
+
 }
 

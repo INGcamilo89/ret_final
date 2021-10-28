@@ -18,14 +18,20 @@ public class barcosRepository{
         public barcos crearBarcos(barcos Barcos)
         {
         return BarcosCrudRepository.save(Barcos);
-    }   //actualiza un barco con id especifico
-        public Optional<barcos> getBarcos(int id){
+    }
+
+
+    public Optional <barcos> getBarcos(int id){
+
             return BarcosCrudRepository.findById(id);
-        }
-        //elimina lista de barcos
-        public void eliminarBarcos(barcos Barcos)
-        {
+    }
+    public barcos save(barcos Barcos)
+    {
+        return BarcosCrudRepository.save(Barcos);
+    }
+    public void delete(barcos Barcos){
+
             BarcosCrudRepository.delete(Barcos);
-        }
+    }
 
 }

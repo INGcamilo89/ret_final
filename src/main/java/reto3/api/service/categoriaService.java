@@ -23,9 +23,31 @@ public class categoriaService {
         return CategoriasRepository.crearCategorias(categorias);
 
     }
-    public Optional<Categorias> getCatEGORIAS(int CategoriaId){
-        return  CategoriasRepository.getCalificacion(CategoriaId);
+
+    public Categorias update(Categorias categorias){
+        if(categorias.getId()!=null){
+            Optional<Categorias>g=CategoriasRepository.getCategorias(categorias.getId());
+            if(!g.equals(null)){
+                if(categorias.getDescription()!=null){
+                    g.get().setDescription(categorias.getDescription());
+                }
+                if(categorias.getName()!=null){
+                    g.get().setName(categorias.getName());
+                }
+                return CategoriasRepository.save(g.get());
+            }
+        }
+        return categorias;
     }
 
+/*
+    public boolean deleteCategorias(int id){
+        Boolean d=getCategorias(id).map(categorias -> {
+            CategoriasRepository.delete(categorias);
+            return true;
+        }).orElse(false);
+        return d;
+    }
+  */
 }
 

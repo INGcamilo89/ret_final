@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.*;
 import reto3.api.model.Categorias;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/Category")
+@CrossOrigin(origins = "*",methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class categoriaController {
 
     @Autowired
@@ -19,7 +21,11 @@ public class categoriaController {
 
         return CategoriaService.obtenerCategorias();
     }
-
+/*
+    @GetMapping("/{id}")
+    public Optional<Categorias>getCategoria(@PathVariable("id")int categoriaId){
+        return CategoriaService.getCatEGORIAS(categoriaId);
+    }*/
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Categorias crearCategorias(@RequestBody Categorias categorias){

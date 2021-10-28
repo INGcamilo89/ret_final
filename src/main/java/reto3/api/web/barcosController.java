@@ -36,14 +36,4 @@ public class barcosController {
 
         return BarcosService.crearBarcos(Barcos);
     }
-    @PutMapping("/update")
-    @ResponseStatus(HttpStatus.CREATED)
-    public barcos actualizarBarcos(@RequestBody barcos Barcos){
-        return BarcosService.actualizarBarcos(Barcos);
-    }
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void eliminarBarcos(@PathVariable("id") int BarcosId){
-         BarcosService.eliminar(BarcosId);
-    }
 }

@@ -13,19 +13,19 @@ public class clienteRepository {
     @Autowired
     clienteCrudRepository ClienteCrudRepository;
 
-    public List<Clientes> obtenerClientes(){
+    public List<Clientes> getAll(){
         return (List<Clientes>) ClienteCrudRepository.findAll();
 
     }
 
-    public Clientes crearClientes(Clientes clientes) {
+    public Clientes save(Clientes clientes) {
         return ClienteCrudRepository.save(clientes);
     }
 
     public Optional<Clientes> getClientes(int id){
         return ClienteCrudRepository.findById(id);
     }
-    public void eliminarClientes(Clientes clientes){
+    public void delete(Clientes clientes){
         ClienteCrudRepository.delete(clientes);
     }
 

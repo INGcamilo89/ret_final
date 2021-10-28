@@ -25,7 +25,7 @@ public class clienteController {
     @ResponseStatus(HttpStatus.CREATED)
     public Clientes crearClientes(@RequestBody Clientes clientes){
 
-        return ClienteService.crearClientes(clientes);
+        return ClienteService.save(clientes);
     }
 
 

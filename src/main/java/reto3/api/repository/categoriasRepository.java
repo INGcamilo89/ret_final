@@ -23,15 +23,26 @@ public class categoriasRepository {
         return categoriasCrudRepository.save(categorias);
     }
 
-    public Optional<Categorias> getCalificacion(int id){
+
+
+    public List<Categorias> getAll()
+    {
+        return (List<Categorias>) categoriasCrudRepository.findAll();
+    }
+    public Optional <Categorias> getCategorias(int id){
         return categoriasCrudRepository.findById(id);
     }
-    public void eliminarCategorias(Categorias categorias){
+
+    public Categorias save(Categorias categorias){
+        return categoriasCrudRepository.save(categorias);
+    }
+    public void delete(Categorias categorias)
+    {
         categoriasCrudRepository.delete(categorias);
     }
 
-
 }
+
 
 
 

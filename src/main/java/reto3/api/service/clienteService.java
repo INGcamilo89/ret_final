@@ -15,17 +15,59 @@ public class clienteService {
 
     public List<Clientes> obtenerClientes()
     {
-        return ClienteRepository.obtenerClientes();
+        return ClienteRepository.getAll();
     }
 
 
-    public Clientes crearClientes(Clientes clientes)
+    public Clientes save(Clientes clientes)
     {
-        return  ClienteRepository.crearClientes(clientes);
+        return  ClienteRepository.save(clientes);
     }
 
     public Optional<Clientes> getClientes(int CalificacionId){
         return  ClienteRepository.getClientes(CalificacionId);
     }
 
+
+    public Clientes update(Clientes clientes)
+    {
+        if(clientes.getIdClient()!=null)
+        {
+            Optional<Clientes> e= ClienteRepository.getClientes(clientes.getIdClient());
+            if(!e.equals(null))
+            {
+                if(clientes.getName()!=null)
+                {
+                    e.get().setName(clientes.getName());
+                }
+                if(clientes.getAge()!=null)
+                {
+                    e.get().setAge(clientes.getAge());
+                }
+                if(clientes.getPassword()!=null)
+                {
+                    e.get().setPassword(clientes.getPassword());
+                }
+                ClienteRepository.save(e.get());
+                return e.get();
+            }
+            else
+            {
+                return clientes;
+            }
+        }
+        else
+        {
+            return clientes;
+        }
+    }
+    public boolean deleteClient(int idCliente)
+    {
+        Boolean aBoolean = getClientes(idCliente).map(clientes ->
+        {
+            ClienteRepository.delete(clientes);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
 }

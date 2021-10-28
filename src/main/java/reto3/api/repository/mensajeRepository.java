@@ -22,14 +22,25 @@ public class mensajeRepository {
     }
 
     public Mensajes crearMensaje(Mensajes mensajes) {
+
         return MensajesCrudRepository.save(mensajes);
     }
 
     public Optional<Mensajes>getMensaje(int id){
         return MensajesCrudRepository.findById(id);
     }
-    public void eliminarMensaje(Mensajes mensajes){
+    public void delete(Mensajes mensajes)
+    {
         MensajesCrudRepository.delete(mensajes);
     }
+    public List<Mensajes> getAll(){
+        return (List<Mensajes>) MensajesCrudRepository.findAll();
+    }
+    public Optional<Mensajes> getMessage(int id){
+        return MensajesCrudRepository.findById(id);
+    }
 
+    public Mensajes save(Mensajes mensajes){
+        return MensajesCrudRepository.save(mensajes);
+    }
 }

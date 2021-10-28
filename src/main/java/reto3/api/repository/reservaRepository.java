@@ -25,9 +25,19 @@ public class reservaRepository {
     public Optional<Reservas> getReservas(int id){
         return ReservaCrudRepository.findById(id);
     }
-    public void eliminarReservas(Reservas reservas){
-        ReservaCrudRepository.delete(reservas);
+
+    public List<Reservas> getAll(){
+        return (List<Reservas>) ReservaCrudRepository.findAll();
+    }
+    public Optional<Reservas> getReserva(int id){
+        return ReservaCrudRepository.findById(id);
     }
 
+    public Reservas save(Reservas reservas){
+        return ReservaCrudRepository.save(reservas);
+    }
+    public void delete(Reservas message){
+        ReservaCrudRepository.delete(message);
+    }
 
 }

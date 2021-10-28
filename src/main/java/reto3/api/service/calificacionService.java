@@ -26,8 +26,5 @@ public class calificacionService {
         return  CalificacionRepository.crearCalificacion(calificacion);
     }
 
-    public Optional<Calificacion> getCalificacion(int CalificacionId){
-        return  CalificacionRepository.getCalificacion(CalificacionId);
-    }
 
 }

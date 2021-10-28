@@ -30,4 +30,47 @@ public class reservasService {
     public Optional<Reservas> getReservas(int ReservasId){
         return  ReservaRepository.getReservas(ReservasId);
     }
+
+    public Reservas update(Reservas reservas)
+    {
+        if(reservas.getIdReservation()!=null)
+        {
+            Optional<Reservas> e= ReservaRepository.getReservas(reservas.getIdReservation());
+            if(!e.equals(null))
+            {
+                if(reservas.getStartDate()!=null)
+                {
+                    e.get().setStartDate(reservas.getStartDate());
+                }
+                else if(reservas.getDevolutionDate()!=null)
+                {
+                    e.get().setDevolutionDate(reservas.getDevolutionDate());
+                }
+                else if(reservas.getStatus()!=null)
+                {
+                    e.get().setStatus(reservas.getStatus());
+                }
+                ReservaRepository.save(e.get());
+                return e.get();
+            }
+            else
+            {
+                return reservas;
+            }
+        }
+        else
+        {
+            return reservas;
+        }
+    }
+    public boolean deleteReservas(int reservationId)
+    {
+        Boolean aBoolean = getReservas(reservationId).map(reservas ->
+        {
+            ReservaRepository.delete(reservas);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
+
 }
