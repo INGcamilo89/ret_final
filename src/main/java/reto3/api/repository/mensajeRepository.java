@@ -26,7 +26,8 @@ public class mensajeRepository {
         return MensajesCrudRepository.save(mensajes);
     }
 
-    public Optional<Mensajes>getMensaje(int id){
+    public Optional<Mensajes>getMensaje(int id)
+    {
         return MensajesCrudRepository.findById(id);
     }
     public void delete(Mensajes mensajes)

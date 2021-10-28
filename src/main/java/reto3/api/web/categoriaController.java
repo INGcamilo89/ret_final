@@ -21,15 +21,27 @@ public class categoriaController {
 
         return CategoriaService.obtenerCategorias();
     }
-/*
+
     @GetMapping("/{id}")
-    public Optional<Categorias>getCategoria(@PathVariable("id")int categoriaId){
-        return CategoriaService.getCatEGORIAS(categoriaId);
-    }*/
+    public Optional<Categorias>getCategoriaw(@PathVariable("id")int categoriaId){
+        return CategoriaService.getCategorias(  categoriaId);
+    }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public Categorias crearCategorias(@RequestBody Categorias categorias){
 
         return CategoriaService.crearCategorias(categorias);
+    }
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Categorias update(@RequestBody Categorias categorias)
+    {
+        return CategoriaService.update(categorias);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int idCategory) {
+        return CategoriaService.deleteCategorias(idCategory);
     }
 }

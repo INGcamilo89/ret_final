@@ -35,5 +35,19 @@ public class barcosController {
     public barcos crearBarcos(@RequestBody barcos Barcos){
 
         return BarcosService.crearBarcos(Barcos);
+
+    }
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public barcos update(@RequestBody barcos Barcos)
+    {
+        return BarcosService.update(Barcos);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id)
+    {
+        return BarcosService.deleteBarcos(id);
     }
 }

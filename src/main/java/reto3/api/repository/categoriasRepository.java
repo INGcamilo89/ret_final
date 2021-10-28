@@ -29,17 +29,20 @@ public class categoriasRepository {
     {
         return (List<Categorias>) categoriasCrudRepository.findAll();
     }
-    public Optional <Categorias> getCategorias(int id){
+    public Optional <Categorias> getCategorias(int id)
+    {
         return categoriasCrudRepository.findById(id);
     }
 
     public Categorias save(Categorias categorias){
         return categoriasCrudRepository.save(categorias);
     }
-    public void delete(Categorias categorias)
+    public void delete(Categorias Categorias)
     {
-        categoriasCrudRepository.delete(categorias);
+
+        categoriasCrudRepository.delete(Categorias);
     }
+
 
 }
 

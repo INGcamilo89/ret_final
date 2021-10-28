@@ -23,6 +23,9 @@ public class categoriaService {
         return CategoriasRepository.crearCategorias(categorias);
 
     }
+    public Optional<Categorias> getCategorias(int CategoriaId){
+        return CategoriasRepository.getCategorias(CategoriaId);
+    }
 
     public Categorias update(Categorias categorias){
         if(categorias.getId()!=null){
@@ -40,14 +43,14 @@ public class categoriaService {
         return categorias;
     }
 
-/*
-    public boolean deleteCategorias(int id){
-        Boolean d=getCategorias(id).map(categorias -> {
+
+    public boolean deleteCategorias(int CategoriasId){
+        Boolean aBoolean= getCategorias(CategoriasId).map(categorias -> {
             CategoriasRepository.delete(categorias);
             return true;
         }).orElse(false);
-        return d;
+        return aBoolean;
     }
-  */
+
 }
 
