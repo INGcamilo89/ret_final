@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reto3.api.model.Reservas;
 import reto3.api.service.reservasService;
+import reto3.api.reportes.StatusReservas;
+import reto3.api.reportes.ContadorClientes;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +19,7 @@ public class reservasController {
     reservasService ReservasService;
 
     @GetMapping("/all")
-    public List<Reservas> getReservas() {
+    public List<Reservas> getAll() {
 
         return ReservasService.obtenerReservas();
     }
@@ -46,6 +48,21 @@ public class reservasController {
     public boolean delete(@PathVariable("id") int idReservation)
     {
         return ReservasService.deleteReservas(idReservation);
+    }
+
+    @GetMapping("/report-status")
+    public StatusReservas getReservas(){
+        return ReservasService.reporteStatusServicio();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservas> getReservasTiempo (@PathVariable("dateOne")String dateOne, @PathVariable("dateTwo")String dateTwo ){
+        return ReservasService.reporteTiempoServicio(dateOne, dateTwo);
+    }
+
+    @GetMapping("/report-clients")
+    public List<ContadorClientes> getClientes(){
+        return ReservasService.reporteClientesServicio();
     }
 
 }
